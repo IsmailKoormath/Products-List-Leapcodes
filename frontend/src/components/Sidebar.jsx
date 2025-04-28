@@ -41,6 +41,18 @@ export default function Sidebar({ filters, setFilters }) {
                 <div className="space-y-3">
                     <h3 className="text-lg font-medium text-cyan-900">Select a Brand:</h3>
                     <div className="space-y-2">
+                        <div className="flex sm:hidden visible items-center">
+                            <input
+                                type="radio"
+                                id=""
+                                name="brand"
+                                value=""
+                                checked={""}
+                                onChange={() => handleBrandChange("")}
+                                className="h-4 w-4 text-blue-500"
+                            />
+                            <label htmlFor="" className="ml-2 text-gray-700">All</label>
+                        </div>
                         {["Apple", "Samsung", "Sony", "Adidas", "Nike", "Dell"].map((brand) => (
                             <div key={brand} className="flex items-center">
                                 <input
