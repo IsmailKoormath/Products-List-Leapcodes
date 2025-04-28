@@ -2,13 +2,17 @@ import db from "../models/db.js";
 
 export const getAllProducts = async (req, res) => {
   try {
-    const { category, minPrice, maxPrice, sort } = req.query;
+    const { category, minPrice, maxPrice, sort, brand } = req.query;
     let query = "SELECT * FROM products WHERE 1";
     let params = [];
 
     if (category) {
       query += " AND category = ?";
       params.push(category);
+    }
+    if (brand) {
+      query += " AND brand = ?";
+      params.push(brand);
     }
     if (minPrice) {
       query += " AND price >= ?";
