@@ -19,12 +19,12 @@ Clone the Repository
 
 ### Install Dependencies
 ### Frontend
-cd frontend
-npm install
+- cd frontend
+- npm install
 
 ### Backend
-cd backend
-npm install
+- cd backend
+- npm install
 
 ## Setting up Database
 Create a .env file inside the backend/ folder with:
@@ -38,23 +38,23 @@ DB_NAME=productlist
 
 - Run the backend once — it will automatically:
 
-> Create the productlist database (if it doesn't exist).
-> Create the products table (if it doesn't exist).
+ Create the productlist database (if it doesn't exist).
+ Create the products table (if it doesn't exist).
 
 ## How to Run the App
 
-###Start Backend
-> cd backend
-> npm run dev
+### Start Backend
+- cd backend
+- npm run dev
 Server runs at: http://localhost:5000
 
-###Start Frontend
-> cd frontend
-> npm run dev
+### Start Frontend
+- cd frontend
+- npm run dev
 App runs at: http://localhost:3000
 
 ###Seed Products
 To populate the database with sample products:
-- # npm run seed
+- npm run seed
 
 
