@@ -1,38 +1,17 @@
-import db from "../models/db.js";
+import { getAllProducts } from "../models/productModel.js";
 
-export const getAllProducts = async (req, res) => {
+export const getProducts = async (req, res) => {
   try {
-    const { category, minPrice, maxPrice, sort, brand } = req.query;
-    let query = "SELECT * FROM products WHERE 1";
-    let params = [];
+    const filters = {
+      category: req.query.category || null,
+      brand: req.query.brand || null,
+      sort: req.query.sort || null,
+    };
 
-    if (category) {
-      query += " AND category = ?";
-      params.push(category);
-    }
-    if (brand) {
-      query += " AND brand = ?";
-      params.push(brand);
-    }
-    if (minPrice) {
-      query += " AND price >= ?";
-      params.push(minPrice);
-    }
-    if (maxPrice) {
-      query += " AND price <= ?";
-      params.push(maxPrice);
-    }
-    if (sort) {
-      if (sort === "low-to-high") {
-        query += " ORDER BY price ASC";
-      } else if (sort === "high-to-low") {
-        query += " ORDER BY price DESC";
-      }
-    }
-
-    const [products] = await db.query(query, params);
-    res.json(products);
+    const products = await getAllProducts(filters);
+    res.status(200).json(products);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error("Error fetching products:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };

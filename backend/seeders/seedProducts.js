@@ -1,9 +1,9 @@
-import db from "./models/db.js";
+import db from "../config/db.js";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-// Updated real products with real images
+// Real product data with images
 const products = [
   [
     "iPhone 15 Pro Max",
@@ -43,7 +43,7 @@ const products = [
     399.99,
     "https://www.thesonyshop.ca/cdn/shop/products/WH1000XM5L_1.jpg?v=1680535042",
     "Sony",
-    "These noise-canceling headphones are perfect for music lovers, featuring superb sound quality, up to 30 hours of battery life, and comfortable design.",
+    "These noise-canceling headphones are perfect for music lovers, featuring superb sound quality, up to 30 hours of battery life, and a comfortable design.",
   ],
   [
     "AirPods Pro 2 (USB-C)",
@@ -87,20 +87,25 @@ const products = [
   ],
 ];
 
-
 async function seedProducts() {
   try {
+    console.log("Seeding products...");
+
+    // Optional: Clear existing products first
+    await db.query("DELETE FROM products");
+
     for (const product of products) {
       await db.query(
-        "INSERT INTO products (name, category, price, image,brand,description) VALUES (?, ?, ?, ?, ?, ?)",
+        "INSERT INTO products (name, category, price, image, brand, description) VALUES (?, ?, ?, ?, ?, ?)",
         product
       );
     }
-    console.log("products inserted successfully.");
+
+    console.log(" Products seeded successfully!");
     process.exit(0);
   } catch (error) {
-    console.error("Failed to insert products:", error);
-    process.exit(1);
+    console.error(" Failed to seed products:", error.message);
+    process.exit(1); 
   }
 }
 
