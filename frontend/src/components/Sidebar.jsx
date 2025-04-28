@@ -23,7 +23,6 @@ export default function Sidebar({ filters, setFilters }) {
                 </button>
             </div>
 
-            {/* Sidebar */}
             <div
                 className={`w-64 min-h-screen lg:w-60 p-6 sm:mt-20 bg-white shadow-lg rounded-lg fixed  sm:sticky top-0 left-0  transition-transform ${isSidebarOpen ? "transform translate-x-0" : "transform -translate-x-full"
                     } sm:translate-x-0 z-50`}
@@ -71,7 +70,6 @@ export default function Sidebar({ filters, setFilters }) {
                 </div>
             </div>
 
-            {/* Overlay when sidebar is open on mobile */}
             {isSidebarOpen && (
                 <div
                     className="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-50 sm:hidden"
