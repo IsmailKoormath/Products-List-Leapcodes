@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// Real product data with images
+//------- product data --------
 const products = [
   [
     "iPhone 15 Pro Max",
@@ -91,7 +91,7 @@ async function seedProducts() {
   try {
     console.log("Seeding products...");
 
-    // Optional: Clear existing products first
+    //--------- Clear existing products first ----------
     await db.query("DELETE FROM products");
 
     for (const product of products) {
